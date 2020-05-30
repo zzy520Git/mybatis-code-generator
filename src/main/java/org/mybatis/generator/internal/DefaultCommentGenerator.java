@@ -47,6 +47,13 @@ public class DefaultCommentGenerator implements CommentGenerator {
     /** The suppress all comments. */
     private boolean suppressAllComments;
 
+    public boolean getSuppressAllComments() {
+        return suppressAllComments;
+    }
+    public boolean getAddRemarkComments() {
+        return addRemarkComments;
+    }
+
     /** The addition of table remark's comments.
      * If suppressAllComments is true, this option is ignored*/
     private boolean addRemarkComments;
