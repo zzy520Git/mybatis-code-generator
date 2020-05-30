@@ -119,6 +119,7 @@ public class CustomCommentGenerator extends DefaultCommentGenerator {
                                  IntrospectedColumn introspectedColumn) {
     }
 
+    @Override
     public void addSetterComment(Method method,
                                  IntrospectedTable introspectedTable,
                                  IntrospectedColumn introspectedColumn) {
