@@ -15,29 +15,22 @@
  */
 package org.mybatis.generator.codegen.ibatis2.model;
 
-import static org.mybatis.generator.internal.util.JavaBeansUtil.getGetterMethodName;
-import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
-import static org.mybatis.generator.internal.util.messages.Messages.getString;
+import org.mybatis.generator.api.CommentGenerator;
+import org.mybatis.generator.api.FullyQualifiedTable;
+import org.mybatis.generator.api.IntrospectedColumn;
+import org.mybatis.generator.api.dom.OutputUtilities;
+import org.mybatis.generator.api.dom.java.*;
+import org.mybatis.generator.codegen.AbstractJavaGenerator;
+import org.mybatis.generator.codegen.ibatis2.Ibatis2FormattingUtilities;
+import org.mybatis.generator.internal.rules.Rules;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.mybatis.generator.api.CommentGenerator;
-import org.mybatis.generator.api.FullyQualifiedTable;
-import org.mybatis.generator.api.IntrospectedColumn;
-import org.mybatis.generator.api.dom.OutputUtilities;
-import org.mybatis.generator.api.dom.java.CompilationUnit;
-import org.mybatis.generator.api.dom.java.Field;
-import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
-import org.mybatis.generator.api.dom.java.InnerClass;
-import org.mybatis.generator.api.dom.java.JavaVisibility;
-import org.mybatis.generator.api.dom.java.Method;
-import org.mybatis.generator.api.dom.java.Parameter;
-import org.mybatis.generator.api.dom.java.TopLevelClass;
-import org.mybatis.generator.codegen.AbstractJavaGenerator;
-import org.mybatis.generator.codegen.ibatis2.Ibatis2FormattingUtilities;
-import org.mybatis.generator.internal.rules.Rules;
+import static org.mybatis.generator.internal.util.JavaBeansUtil.getGetterMethodName;
+import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
 /**
  * 
@@ -147,6 +140,56 @@ public class ExampleGenerator extends AbstractJavaGenerator {
                 .getBooleanPrimitiveInstance());
         method.setName("isDistinct"); //$NON-NLS-1$
         method.addBodyLine("return distinct;"); //$NON-NLS-1$
+        commentGenerator.addGeneralMethodComment(method, introspectedTable);
+        topLevelClass.addMethod(method);
+
+        // add field, getter, setter for orderby clause
+        Field fieldOffset = new Field();
+        fieldOffset.setVisibility(JavaVisibility.PROTECTED);
+        fieldOffset.setType(FullyQualifiedJavaType.getIntInstance());
+        fieldOffset.setName("offset"); //$NON-NLS-1$
+        commentGenerator.addFieldComment(fieldOffset, introspectedTable);
+        topLevelClass.addField(fieldOffset);
+
+        method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setName("setOffset"); //$NON-NLS-1$
+        method.addParameter(new Parameter(FullyQualifiedJavaType
+                .getIntInstance(), "offset")); //$NON-NLS-1$
+        method.addBodyLine("this.offset = offset;"); //$NON-NLS-1$
+        commentGenerator.addGeneralMethodComment(method, introspectedTable);
+        topLevelClass.addMethod(method);
+
+        method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(FullyQualifiedJavaType.getIntInstance());
+        method.setName("getOffset"); //$NON-NLS-1$
+        method.addBodyLine("return offset;"); //$NON-NLS-1$
+        commentGenerator.addGeneralMethodComment(method, introspectedTable);
+        topLevelClass.addMethod(method);
+
+        // add field, getter, setter for orderby clause
+        Field fieldLimit = new Field();
+        fieldLimit.setVisibility(JavaVisibility.PROTECTED);
+        fieldLimit.setType(FullyQualifiedJavaType.getIntInstance());
+        fieldLimit.setName("limit"); //$NON-NLS-1$
+        commentGenerator.addFieldComment(fieldLimit, introspectedTable);
+        topLevelClass.addField(fieldLimit);
+
+        method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setName("setLimit"); //$NON-NLS-1$
+        method.addParameter(new Parameter(FullyQualifiedJavaType
+                .getIntInstance(), "limit")); //$NON-NLS-1$
+        method.addBodyLine("this.limit = limit;"); //$NON-NLS-1$
+        commentGenerator.addGeneralMethodComment(method, introspectedTable);
+        topLevelClass.addMethod(method);
+
+        method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(FullyQualifiedJavaType.getIntInstance());
+        method.setName("getLimit"); //$NON-NLS-1$
+        method.addBodyLine("return limit;"); //$NON-NLS-1$
         commentGenerator.addGeneralMethodComment(method, introspectedTable);
         topLevelClass.addMethod(method);
 

@@ -15,11 +15,11 @@
  */
 package org.mybatis.generator.codegen.mybatis3.xmlmapper.elements;
 
-import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
-
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
+
+import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
 
 /**
  * 
@@ -73,6 +73,11 @@ public class SelectByExampleWithoutBLOBsElementGenerator extends
         ifElement = new XmlElement("if"); //$NON-NLS-1$
         ifElement.addAttribute(new Attribute("test", "orderByClause != null")); //$NON-NLS-1$ //$NON-NLS-2$
         ifElement.addElement(new TextElement("order by ${orderByClause}")); //$NON-NLS-1$
+        answer.addElement(ifElement);
+
+        ifElement = new XmlElement("if"); //$NON-NLS-1$
+        ifElement.addAttribute(new Attribute("test", "limit > 0")); //$NON-NLS-1$ //$NON-NLS-2$
+        ifElement.addElement(new TextElement("limit #{offset} , #{limit}")); //$NON-NLS-1$
         answer.addElement(ifElement);
 
         if (context.getPlugins()
