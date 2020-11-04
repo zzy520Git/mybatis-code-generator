@@ -8,9 +8,9 @@
   <version>1.3.5</version>
 </parent>
 
-<groupId>com.jd.yao.zzy</groupId>
+<groupId>com.zzy</groupId>
 <artifactId>mybatis-code-generator</artifactId>
-<version>1.2.0-SNAPSHOT</version>
+<version>1.0.0-SNAPSHOT</version>
 
 <packaging>jar</packaging>
 <name>MyBatis Generator Core</name>
@@ -63,19 +63,17 @@
 
   <distributionManagement>
 
-    <repository>
-      <id>central</id>
-      <name>libs-releases</name>
-      <url>http://artifactory.jd.com/libs-releases-local</url>
-    </repository>
+    <!--<repository>-->
+      <!--<id>central</id>-->
+      <!--<name>libs-releases</name>-->
+      <!--<url>http://artifactory.jd.com/libs-releases-local</url>-->
+    <!--</repository>-->
 
-    <snapshotRepository>
-      <id>snapshots</id>
-      <name>libs-snapshots</name>
-      <url>http://artifactory.jd.com/libs-snapshots-local</url>
-    </snapshotRepository>
-    <!--http://artifactory.jd.com/webapp/#/profile-->
-    <!--https://cf.jd.com/pages/viewpage.action?pageId=97089813-->
+    <!--<snapshotRepository>-->
+      <!--<id>snapshots</id>-->
+      <!--<name>libs-snapshots</name>-->
+      <!--<url>http://artifactory.jd.com/libs-snapshots-local</url>-->
+    <!--</snapshotRepository>-->
   </distributionManagement>
 
 </project>
